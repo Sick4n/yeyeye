@@ -45,7 +45,7 @@ body {
     padding: 10px;
     margin: 10px 0;
     text-align: left;
-    border-radiu: 4px;
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s;
 }
@@ -82,5 +82,7 @@ body {
 
 p {
     color: #001e4d;
+    font-size: 20px;
+    font-weight: 700;
 }
 
