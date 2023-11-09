@@ -15,7 +15,6 @@ const questions = [
             { text: "Python", correct: true },
             { text: "HTML", correct: false },
             { text: "CSS", correct: false },
-
         ]
     },
     {
@@ -45,25 +44,22 @@ const questions = [
             { text: "URL", correct: true },
         ]
     },
-
-    {
-
-    }
-
 ];
 
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
-const nextButton = document.getElementById("next-btn");
+const nextButton = document.getElementById("next-btn"); // Added next button
 
 let currentQuestionIndex = 0;
 let score = 0;
+let quizStartTime;
+let quizEndTime;
 
 function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
-    nextButton.innerHTML = "Next";
     showQuestion();
+    quizStartTime = new Date(); // Record quiz start time
 }
 
 function showQuestion() {
@@ -84,9 +80,7 @@ function showQuestion() {
     });
 }
 
-
 function resetState() {
-    nextButton.style.display = "none";
     while (answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);
     }
@@ -107,7 +101,10 @@ function selectAnswer(e) {
         }
         button.disabled = true;
     });
-    nextButton.style.display = "block";
+
+    setTimeout(function () {
+        handleNextButton();
+    }, 2000);
 }
 
 function showScore() {
@@ -115,6 +112,8 @@ function showScore() {
     questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
+    quizEndTime = new Date(); // Record quiz end time
+    displayTotalTime();
 }
 
 function handleNextButton() {
@@ -126,6 +125,13 @@ function handleNextButton() {
     }
 }
 
+function displayTotalTime() {
+    const timeDifference = quizEndTime - quizStartTime;
+    const totalSeconds = Math.floor(timeDifference / 1000);
+    const totalTimeElement = document.createElement("div");
+    totalTimeElement.innerText = `Total Time Used: ${totalSeconds} seconds`;
+    questionElement.appendChild(totalTimeElement);
+}
 
 nextButton.addEventListener("click", () => {
     if (currentQuestionIndex < questions.length) {
@@ -134,6 +140,5 @@ nextButton.addEventListener("click", () => {
         startQuiz();
     }
 });
-
 
 startQuiz();
