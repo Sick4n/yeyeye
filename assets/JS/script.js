@@ -1,47 +1,90 @@
 const questions = [
     {
-        question: "What is a RESTful API?",
+        question: "What does MVC stand for in the context of full-stack development?",
         answers: [
-            { text: "cooking recipe for making pasta dishes", correct: false },
-            { text: "type of musical instrument used in jazz music", correct: false },
-            { text: "species of tropical birds found in the Amazon", correct: false },
-            { text: "web services that uses HTTP requests to interact with resources.", correct: true },
+            { text: "Model View Control", correct: false },
+            { text: "Modular View Controller", correct: false },
+            { text: "Model View Component", correct: false },
+            { text: "Model-View-Controller", correct: true },
         ]
     },
     {
-        question: "Mention a back-end language",
+        question: "Which of the following is a front-end framework for building user interfaces",
         answers: [
-            { text: "Wordpress", correct: false },
-            { text: "Python", correct: true },
-            { text: "HTML", correct: false },
-            { text: "CSS", correct: false },
+            { text: "Django", correct: false },
+            { text: "Angular", correct: true },
+            { text: "Flask", correct: false },
+            { text: "Express", correct: false },
         ]
     },
     {
-        question: "What is a RESTful API?",
+        question: "In JavaScript, what does the typeof operator return for an undefined variable?",
         answers: [
-            { text: "cooking recipe for making pasta dishes", correct: false },
-            { text: "type of musical instrument used in jazz music", correct: false },
-            { text: "species of tropical birds found in the Amazon", correct: false },
-            { text: "web services that uses HTTP requests to interact with resources.", correct: true },
+            { text: "Null", correct: false },
+            { text: "String", correct: false },
+            { text: "Object", correct: false },
+            { text: "Undefined", correct: true },
         ]
     },
     {
-        question: "Define DOM in web development.",
+        question: "Which database type is commonly associated with full-stack development?",
         answers: [
-            { text: "Document One Model", correct: false },
-            { text: "Document Obsidian Model", correct: false },
-            { text: "Document Object Model.", correct: true },
-            { text: "Document obelix Model", correct: false },
+            { text: "XML", correct: false },
+            { text: "NoSQL", correct: false },
+            { text: "SQL", correct: true },
+            { text: "CSV", correct: false },
         ]
     },
     {
-        question: "What's an API endpoint??",
+        question: "What is the role of a reverse proxy in a full-stack application architecture?",
         answers: [
-            { text: "MongoDB", correct: false },
-            { text: "SQL", correct: false },
-            { text: "URI", correct: false },
-            { text: "URL", correct: true },
+            { text: "Manage database connections", correct: false },
+            { text: "Authenticate users", correct: false },
+            { text: "Handle client-side routing", correct: false },
+            { text: "Improve application performance", correct: true },
+        ]
+    }, {
+        question: "What is the purpose of a package manager in full-stack development?",
+        answers: [
+            { text: "Manage software updates", correct: false },
+            { text: "Manage server configurations", correct: false },
+            { text: "Manage project dependencies", correct: true },
+            { text: "Manage database transactions", correct: false },
+        ]
+    },
+    {
+        question: "Which HTTP status code indicates a successful request in a RESTful API?",
+        answers: [
+            { text: "500 Internal Server Error", correct: false },
+            { text: "302 Found", correct: false },
+            { text: "404 Not Found", correct: false },
+            { text: "200 OK", correct: true },
+        ]
+    }, {
+        question: "Which CSS framework is known for its grid system and responsive design capabilities?",
+        answers: [
+            { text: "Tailwind CSS", correct: false },
+            { text: "Bulma", correct: false },
+            { text: "Bootstrap ", correct: true },
+            { text: "Foundation", correct: false },
+        ]
+    },
+    {
+        question: "What is the purpose of the npm command in Node.js development?",
+        answers: [
+            { text: "Execute SQL queries", correct: false },
+            { text: "Create server routes", correct: false },
+            { text: "Define HTML templates", correct: false },
+            { text: "Manage project dependencies", correct: true },
+        ]
+    },
+    {
+        question: "What is a stateless authentication mechanism commonly used in RESTful APIs?",
+        answers: [
+            { text: "Basic Authentication", correct: false },
+            { text: "OAuth", correct: false },
+            { text: "API key", correct: false },
+            { text: "JWT (JSON Web Token)", correct: true },
         ]
     },
 ];
@@ -52,14 +95,22 @@ const nextButton = document.getElementById("next-btn"); // Added next button
 
 let currentQuestionIndex = 0;
 let score = 0;
-let quizStartTime;
-let quizEndTime;
+let timer = null;
+let seconds = 0;
+
+function runTimer() {
+    timer = setInterval(function () {
+        seconds = seconds + 1;
+        document.getElementById('timer').innerHTML = seconds + ' seconds';
+    }, 1000);
+}
 
 function startQuiz() {
+    nextButton.style.display = "none";
     currentQuestionIndex = 0;
     score = 0;
     showQuestion();
-    quizStartTime = new Date(); // Record quiz start time
+    runTimer();
 }
 
 function showQuestion() {
@@ -108,11 +159,11 @@ function selectAnswer(e) {
 }
 
 function showScore() {
+    clearInterval(timer);
     resetState();
     questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
-    quizEndTime = new Date(); // Record quiz end time
     displayTotalTime();
 }
 
@@ -126,11 +177,10 @@ function handleNextButton() {
 }
 
 function displayTotalTime() {
-    const timeDifference = quizEndTime - quizStartTime;
-    const totalSeconds = Math.floor(timeDifference / 1000);
     const totalTimeElement = document.createElement("div");
-    totalTimeElement.innerText = `Total Time Used: ${totalSeconds} seconds`;
+    totalTimeElement.innerText = `Total Time Used: ${seconds} seconds`;
     questionElement.appendChild(totalTimeElement);
+    seconds = 0;
 }
 
 nextButton.addEventListener("click", () => {

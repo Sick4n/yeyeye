@@ -45,7 +45,7 @@ body {
     padding: 10px;
     margin: 10px 0;
     text-align: left;
-    border-radius: 4px;
+    border-radiu: 4px;
     cursor: pointer;
     transition: all 0.3s;
 }
@@ -78,5 +78,9 @@ body {
 
 .incorrect {
     background: #ff9393;
+}
+
+p {
+    color: #001e4d;
 }
 
