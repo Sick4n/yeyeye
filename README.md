@@ -14,6 +14,50 @@
 
 * Join us on this educational journey, where learning meets fun in the realm of Fullstack development. Let the quizzes inspire and elevate your coding expertise. Happy quizzing!
 
+*
+* [Site Owner Goals](#site-owner-goals)
+  * [Educational Engagement](#educational-engagement)
+  * [Skill Assessment](#skill-assessment)
+  * [Community Building](#community-building)
+  * [Knowledge Reinforcement](#knowledge-reinforcement)
+  * [User Progress Tracking](#user-progress-tracking)
+  * [Accessibility and User-Friendly Experience](#accessibility-and-user-friendly-experience)
+  * [How to play](#how-to-play)
+* [Design](#design)
+  * [Color](#color)
+  * [About The Color](#about-the-color)
+  * [Fonts](#fonts)
+  * [Layout](#layout)
+  * [Questions](#questions)
+  * [Features Left To Put In](#features-left-to-put-in)
+* [Testing](#testing)
+  * [Validator Testing](#validator-testing)
+    * [HTML](#html)
+    * [CSS](#css)
+    * [JAVASCRIPT](#javascript)
+    * [Accessibility](#accessibility)
+    * [Mobile Lighthouse score](#mobile-lighthouse-score)
+    * [Desktop Lighthouse score](#desktop-lighthouse-score)
+  * [Testing](#testing-1)
+  * [Browser Testing](#browser-testing)
+  * [Device Testing](#device-testing)
+  * [HTML Structure](#html-structure)
+  * [JavaScript Logic](#javascript-logic)
+  * [Functions](#functions)
+  * [Event Listeners](#event-listeners)
+  * [Initialization](#initialization)
+  * [Quiz Flow](#quiz-flow)
+  * [Fixed bugs](#fixed-bugs)
+  * [Know Bugs](#know-bugs)
+* [Technologies Used](#technologies-used)
+* [Programs used](#programs-used)
+* [Deployment](#deployment)
+* [Credits](#credits)
+* [Resources Used](#resources-used)
+* [Acknowledgments](#acknowledgments)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 # Site Owner Goals
 
 ## Educational Engagement
